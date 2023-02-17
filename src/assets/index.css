@@ -82,3 +82,8 @@
   background-color: #27AE60;
   color: white;
 }
+.alfabeto-letter:disabled{
+  background-color: transparent;
+  color: black;
+}
+
