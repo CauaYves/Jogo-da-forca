@@ -2,14 +2,25 @@ import forca0 from '../assets/img/forca0.png'
 import palavras from './palavras'
 
 export default function Jogo(props) {
-
-    let palavra = ""
+    let palavra = ''
+    let underLinePalavra = ''
 
     function randomWord(props, array){
         const i = Math.floor(Math.random()*array.length)
-        props.setActive(false)
         palavra = array[i]
-        console.log(palavra)
+
+        props.setActive(false)
+        underLinePalavra = underLine(palavra)
+        props.setWord(underLinePalavra)
+    }
+
+    function underLine(word){
+        let newWord = '';
+
+        for(let i = 0; i < word.length; i++){
+            newWord += '_'
+        }
+        return newWord
     }
 
     return (
@@ -23,8 +34,7 @@ export default function Jogo(props) {
                     Escolher palavra
                 </button>
                 <div className='letter-contain'>
-                {console.log(palavra)}
-                    <p>{palavra[0]}</p>
+                    <p>{props.word}</p>
                 </div>
             </div>
         </section>
