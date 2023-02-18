@@ -1,11 +1,19 @@
-*{
+@font-face {
+  font-family: Roboto;
+  src: url('/src/assets/font/NotoSans-Bold.woff') format('woff');
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Roboto 'sans-serif';
 }
 
-.game{
+body {
+  font-family: 'Roboto';
+}
+
+.game {
   width: 100vw;
   height: 70vh;
 
@@ -13,22 +21,24 @@
   justify-content: space-around;
 }
 
-.forca-contain{
+.forca-contain {
   margin-top: 80px;
   margin-left: -80px;
 }
 
-.forca{
+.forca {
   height: 460px;
   width: 400px;
 }
-.btn-word{
+
+.btn-word {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-around;
 }
-.btn-word button{
+
+.btn-word button {
   background-color: #27AE60;
   color: #FFFF;
 
@@ -39,17 +49,17 @@
   border-radius: 5px;
 }
 
-.letter-contain{
+.letter-contain {
   display: flex;
   justify-content: space-between;
 }
 
-.letter-contain > p{
-  font-family: Noto Sans;
+.letter-contain>p {
   margin: 0px 5px;
   font-size: 36pt;
 }
-.alfabeto-contain{
+
+.alfabeto-contain {
   width: 660px;
 
   display: flex;
@@ -57,13 +67,14 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.alphabet-container{
+
+.alphabet-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.alfabeto-letter{
+.alfabeto-letter {
   background-color: #E1ECF4;
   color: #39739D;
 
@@ -75,15 +86,16 @@
   height: 40px;
 }
 
-.alfabeto-letter:hover{
+.alfabeto-letter:hover {
   opacity: 0.9;
 }
-.alfabeto-letter:active{
+
+.alfabeto-letter:active {
   background-color: #27AE60;
   color: white;
 }
-.alfabeto-letter:disabled{
+
+.alfabeto-letter:disabled {
   background-color: transparent;
   color: black;
 }
-
