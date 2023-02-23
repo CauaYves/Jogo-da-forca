@@ -1,17 +1,20 @@
-import { useState } from "react"
-import alfabeto from "./alfabeto"
-
-export default function Letras(props) {
-    const [choosed, setChoosed] = useState(false)
-    function chooseLetter(){
-        setChoosed(true)
-    }
+import alfabeto from './alfabeto'
+export default function Letras({ active, disableLetter, arrayLetter }) {
 
     return (
-        <div className="alfabeto-contain">
-            {alfabeto.map(i => {
-                return <button key={i} className="alfabeto-letter" disabled={props.active} onClick={() => chooseLetter}>{i}</button>
-            })}
-        </div>
-    )
-} 
+      <div className="alfabeto-contain">
+        {alfabeto.map(i => {
+          return (
+            <button
+              key={i}
+              className="alfabeto-letter"
+              disabled={(arrayLetter.length === 0 || arrayLetter.includes(i)) ? true : false}
+              onClick={() => disableLetter(i)}
+            >
+              {i}
+            </button>
+          );
+        })}
+      </div>
+    );
+  }

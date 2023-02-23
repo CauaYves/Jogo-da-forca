@@ -6,16 +6,20 @@ export default function Jogo(props) {
     let underLinePalavra = ''
 
     function randomWord(props, array){
+
+        props.setArrayLetter([])
         const i = Math.floor(Math.random()*array.length)
         palavra = array[i]
 
         props.setActive(false)
         underLinePalavra = underLine(palavra)
         props.setWord(underLinePalavra)
+        props.setArrayLetter([...props.arrayLetter, 1])
+
     }
 
     function underLine(word){
-        let newWord = '';
+        let newWord = ''
 
         for(let i = 0; i < word.length; i++){
             newWord += '_'
