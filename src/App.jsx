@@ -1,4 +1,4 @@
-import Jogo from "./components/Jogo";
+import { Jogo, palavra, underLinePalavra } from "./components/Jogo";
 import Letras from "./components/Letras"
 import { useState } from "react";
 
@@ -32,6 +32,10 @@ export default function App() {
       <div className="alphabet-container">
 
         <Letras
+          setWord={setWord}
+          word={word}
+          palavra={palavra}
+          underLinePalavra={underLinePalavra}
           active={active}
           setActive={setActive}
           disableLetter={disableLetter}

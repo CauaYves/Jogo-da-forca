@@ -1,28 +1,34 @@
 import forca0 from '../assets/img/forca0.png'
 import palavras from './palavras'
 
-export default function Jogo(props) {
-    let palavra = ''
-    let underLinePalavra = ''
+let palavra = ''
+let underLinePalavra = ''
 
-    function randomWord(props, array){
+function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word }) {
 
-        props.setArrayLetter([])
-        const i = Math.floor(Math.random()*array.length)
-        palavra = array[i]
+    function randomWord({ arrayLetter, setActive, setArrayLetter, setWord }, array) {
 
-        props.setActive(false)
+        setArrayLetter([])
+
+        for (let i = 0; i < 9; i++) {
+
+            palavra = array[Math.floor(Math.random() * array.length)]
+
+        }
+
+        setActive(false)
         underLinePalavra = underLine(palavra)
-        props.setWord(underLinePalavra)
-        props.setArrayLetter([...props.arrayLetter, 1])
+        setWord(underLinePalavra)
+        setArrayLetter([1])
 
     }
 
-    function underLine(word){
-        let newWord = ''
+    function underLine(word) {
+        console.log(word)
+        let newWord = []
 
-        for(let i = 0; i < word.length; i++){
-            newWord += '_'
+        for (let i = 0; i < word.length; i++) {
+            newWord.push('_')
         }
         return newWord
     }
@@ -34,14 +40,16 @@ export default function Jogo(props) {
                 <img src={forca0} alt='forca' className='forca' />
             </div>
             <div className='btn-word'>
-                <button onClick={ () => randomWord(props, palavras)}>
+                <button onClick={() => randomWord({ arrayLetter, setActive, setArrayLetter, setWord }, palavras)}>
                     Escolher palavra
                 </button>
                 <div className='letter-contain'>
-                    <p>{props.word}</p>
+                    <p>{word}</p>
                 </div>
             </div>
         </section>
     )
 
 }
+
+export { Jogo, palavra, underLinePalavra }
