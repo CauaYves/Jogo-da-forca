@@ -5,3 +5,5 @@ projeto de um jogo de forca, nele, a pessoa jogadora tem que adivinhar uma palav
 
 ### 👁️‍🗨️Preview  
 ![image](https://user-images.githubusercontent.com/108950428/219523160-38ed70d3-e633-48b1-90b5-edaaa7cf0fb1.png)
+  
+### 🔗[Acesse o Deploy aqui](https://projeto8-jogoforca-lilac.vercel.app/)
