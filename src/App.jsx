@@ -38,6 +38,8 @@ export default function App() {
         forca={forca}
         word={word}
 
+        setAttempts={setAttempts}
+        setOverClass={setOverClass}
         setForca={setForca}
         setArrayLetter={setArrayLetter}
         setActive={setActive}
