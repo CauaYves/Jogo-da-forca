@@ -57,7 +57,7 @@ export default function App() {
           setWord={setWord}
           setActive={setActive}
           disableLetter={disableLetter}
-
+          setArrayLetter={setArrayLetter}
           arrayLetter={arrayLetter}
           attempts={attempts}
           active={active}

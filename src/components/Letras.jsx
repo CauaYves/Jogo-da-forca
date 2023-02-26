@@ -1,13 +1,16 @@
 import alfabeto from './alfabeto'
-export default function Letras({ disableLetter, arrayLetter, palavra, word, setWord, setAttempts, attempts, setOverClass, finalWord }) {
+export default function Letras({ disableLetter, arrayLetter, palavra, word, setWord, setAttempts, attempts, setOverClass, finalWord, setArrayLetter }) {
   let failsLetter
 
   function gameOver(){
+    //desabilitar os botões de A a Z
     word = finalWord
     setWord(word)
+    arrayLetter = alfabeto.map(i => i.toLowerCase())
+    setArrayLetter(arrayLetter)
     setOverClass('gameOverLose')
   }
-
+console.log(palavra)
   function changeImg() {
     setAttempts((attempts + 1))
   }
