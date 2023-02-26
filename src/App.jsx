@@ -1,4 +1,4 @@
-import { Jogo, palavra, underLinePalavra } from "./components/Jogo";
+import { finalWord, Jogo, palavra, underLinePalavra } from "./components/Jogo";
 import Letras from "./components/Letras"
 import { useState } from "react";
 
@@ -11,12 +11,12 @@ import forca5 from './assets/img/forca5.png'
 import forca6 from './assets/img/forca6.png'
 
 export default function App() {
-console.log('renderizou app')
   const [arrayLetter, setArrayLetter] = useState([])
   const [active, setActive] = useState(true)
   const [word, setWord] = useState('')
-  const forca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
+  const [forca, setForca] = useState([forca0, forca1, forca2, forca3, forca4, forca5, forca6])
   const [attempts, setAttempts] = useState(0)
+  const [overClass, setOverClass] = useState('')
 
   function disableLetter(letter) {
 
@@ -32,29 +32,37 @@ console.log('renderizou app')
     <div className="App">
 
       <Jogo
+        overClass={overClass}
+        arrayLetter={arrayLetter}
         attempts={attempts}
         forca={forca}
-        setArrayLetter={setArrayLetter}
-        arrayLetter={arrayLetter}
-        setActive={setActive}
         word={word}
+
+        setForca={setForca}
+        setArrayLetter={setArrayLetter}
+        setActive={setActive}
         setWord={setWord}
       />
 
       <div className="alphabet-container">
 
         <Letras
-          setAttempts={setAttempts}
-          attempts={attempts}
-          forca={forca}
-          setWord={setWord}
-          word={word}
           palavra={palavra}
           underLinePalavra={underLinePalavra}
-          active={active}
+          finalWord={finalWord}
+
+          setForca={setForca}
+          setOverClass={setOverClass}
+          setAttempts={setAttempts}
+          setWord={setWord}
           setActive={setActive}
           disableLetter={disableLetter}
+
           arrayLetter={arrayLetter}
+          attempts={attempts}
+          active={active}
+          word={word}
+          overClass={overClass}
         />
 
       </div>

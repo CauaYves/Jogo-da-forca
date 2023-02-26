@@ -1,13 +1,19 @@
 import alfabeto from './alfabeto'
-export default function Letras({ disableLetter, arrayLetter, palavra, forca, word, setWord, setAttempts, attempts }) {
+export default function Letras({ disableLetter, arrayLetter, palavra, word, setWord, setAttempts, attempts, setOverClass, finalWord }) {
   let failsLetter
+
+  function gameOver(){
+    word = finalWord
+    setWord(word)
+    setOverClass('gameOverLose')
+  }
 
   function changeImg() {
     setAttempts((attempts + 1))
   }
 
   function checkLetter(letter) {
-
+    
     let newWord = palavra.split("").map((i, index) => {
 
       if (letter.toLowerCase() === i) {
@@ -16,11 +22,17 @@ export default function Letras({ disableLetter, arrayLetter, palavra, forca, wor
         
         failsLetter++
 
-        if(failsLetter === palavra.length){
+        if(attempts === 6){
+          gameOver()
+        }else if(failsLetter === palavra.length && attempts < 5){
+          changeImg()
+        }else if(failsLetter === palavra.length && attempts === 5){
+          gameOver()
           changeImg()
         }
         return word[index]
       }
+
     })
     setWord(newWord)
   }

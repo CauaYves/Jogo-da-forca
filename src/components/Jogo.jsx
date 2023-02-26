@@ -2,23 +2,26 @@ import palavras from './palavras'
 
 let palavra = ''
 let underLinePalavra = ''
-console.log(palavra)
-function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word, forca, attempts }) {
+let finalWord = ''
+
+function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word, forca, attempts, overClass }) {
+
     function randomWord({ setActive, setArrayLetter, setWord }, array) {
 
         palavra = (array[Math.floor(Math.random() * array.length)])
+        finalWord = palavra
         setActive(false)
         underLinePalavra = underLine(palavra)
         setWord(underLinePalavra)
         setArrayLetter([1])
 
     }
-    console.log('erros:',attempts)
+
     function underLine(word) {
 
-        return word.split('').map(function(char) {
+        return word.split('').map(function (char) {
             return '_';
-          });
+        });
 
     }
 
@@ -26,7 +29,7 @@ function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word, forca, at
         <section className="game">
 
             <div className='forca-contain'>
-                <img src={forca[attempts]} alt={forca[attempts]} className='forca' data-test="game-image"/>
+                <img src={forca[attempts]} alt={forca[attempts]} className='forca' data-test="game-image" />
             </div>
             <div className='btn-word'>
                 <button onClick={() => {
@@ -35,7 +38,7 @@ function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word, forca, at
                     Escolher palavra
                 </button>
                 <div className='letter-contain'>
-                    <p data-test="word">{word}</p>
+                    <p className={overClass} data-test="word">{word}</p>
                 </div>
             </div>
         </section>
@@ -43,4 +46,4 @@ function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word, forca, at
 
 }
 
-export { Jogo, palavra, underLinePalavra }
+export { Jogo, palavra, underLinePalavra, finalWord, }
