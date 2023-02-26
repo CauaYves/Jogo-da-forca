@@ -1,44 +1,52 @@
-import alfabeto from './alfabeto'
+import alfabeto from '../alfabeto'
 export default function Letras({ disableLetter, arrayLetter, palavra, word, setWord, setAttempts, attempts, setOverClass, finalWord, setArrayLetter }) {
   let failsLetter
-
-  function gameOver(){
-    //desabilitar os botões de A a Z
-    word = finalWord
-    setWord(word)
+  function showWord() {
+    setWord(finalWord)
+  }
+  console.log(finalWord)
+  function disabledAlphabetBtns() {
     arrayLetter = alfabeto.map(i => i.toLowerCase())
     setArrayLetter(arrayLetter)
     setOverClass('gameOverLose')
   }
-console.log(palavra)
+  function gameOver() {
+    showWord()
+    disabledAlphabetBtns()
+    changeImg()
+  }
   function changeImg() {
     setAttempts((attempts + 1))
   }
 
   function checkLetter(letter) {
-    
     let newWord = palavra.split("").map((i, index) => {
-
       if (letter.toLowerCase() === i) {
         return i
       } else {
-        
         failsLetter++
-
-        if(attempts === 6){
-          gameOver()
-        }else if(failsLetter === palavra.length && attempts < 5){
+        if (failsLetter === palavra.length && attempts < 5) {
           changeImg()
-        }else if(failsLetter === palavra.length && attempts === 5){
+        } else if (failsLetter === palavra.length && attempts === 5) {
           gameOver()
-          changeImg()
         }
         return word[index]
       }
-
     })
-    setWord(newWord)
+    
+    // Verifica se a palavra foi completa
+    if (!newWord.includes('_')) {
+      setOverClass('gameOverWin')
+    }
+  
+    if (attempts >= 5) {
+      gameOver()
+    } else {
+      setWord(newWord)
+    }
   }
+  
+
 
   return (
     <div className="alfabeto-contain">

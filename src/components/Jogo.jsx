@@ -1,4 +1,4 @@
-import palavras from './palavras'
+import palavras from '../palavras'
 
 let palavra = ''
 let underLinePalavra = ''
@@ -24,7 +24,6 @@ function Jogo({ arrayLetter, setActive, setArrayLetter, setWord, word, forca, at
         });
 
     }
-
     return (
         <section className="game">
 
